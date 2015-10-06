@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>一同记账吧</title>
+    <link rel="stylesheet" href="/static/main/bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/main/Pdate/datetimepicker.css"/>
+    <link rel="stylesheet" href="/static/main/css/base.css">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <script src="/static/main/js/jquery.min.js"></script>
+    <script src="/static/main/js/jquery.format.js"></script>
+    <script src="/static/main/js/jquery.form.js"></script>
+    <script src="/static/main/js/json2.js"></script>
+    <script src="/static/main/bootstrap3/js/bootstrap.min.js"></script>
+    <script src="/static/main/Pdate/datetimepicker.js"></script>
+    <script src="/static/main/js/base.js"></script>
+</head>
+
+<body>
+    <div id="pipe_1" class="head">
+        <div class="content">
+            <div class="logo">
+                <span class="img"></span>
+            </div>
+            
+            <div class="tool">
+                <div class="login">
+                    {% if user.is_superuser %}
+                        <a href="/accounts/admin/" target="_blank">管理员</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <a href="#">{{user.first_name}}</a>
+                        <a href="/accounts/logout/?next=/account/content">退出</a>
+                    {% else %}
+                        <a href="/accounts/login/?next=/account/content">登录</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pipe_2" class="ranking school">
+        <div class="school-head">
+            <h1>财富值</h1>
+            <div class="stats">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <div class="stat s1">
+                            <h2>{{presents.lv}}</h2>
+                            <h6>{{Account.lv}}</h6>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="stat s2">
+                            <h2>{{presents.yu}}</h2>
+                            <h6>{{Account.yu}}</h6>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="stat s3">
+                            <h2>{{presents.xu}}</h2>
+                            <h6>{{Account.xu}}</h6>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="stat s3">
+                            <h2>{{presents.xu}}</h2>
+                            <h6>{{Account.dong}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="des">记录每个用户剩余的财富值，可以与其他用户摊账进行提现</div>
+        </div>  
+        <div class="base-form">
+            <div class="func-left">
+                <input type="text" class="form-control" placeholder="键入关键字" style="width: 200px;"
+                    onkeyup="main.base.filter(this);">
+            </div>
+            <div class="func-right">
+                {% if user.is_authenticated %}
+                <button type="button" class="btn btn-primary" onclick="$('#keep_accounts').show();">记账</button>
+                {% endif %}
+                {% if user.is_superuser %}
+                <button type="button" class="btn btn-primary">提现</button>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="tabDiv">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>说明</th>
+                        <th>金额</th>
+                        <th>{{Account.lv}}</th>
+                        <th>{{Account.yu}}</th>
+                        <th>{{Account.xu}}</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+                <tbody class="filter_tb">
+                    {% for account in account_list %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td title="付账人：[{{account.operator}}]&#10;金&nbsp;&nbsp;&nbsp;额：[{{account.amount}}元]">{{account.desc}}</td>
+                        <td>{{account.amount}}</td>
+                        <td>{{account.lv}}</td>
+                        <td>{{account.yu}}</td>
+                        <td>{{account.xu}}</td>
+                        <td>{{account.time|date:"Y-m-d"}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="more">
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="pipe_3" class="foot">
+        <div class="fb">
+            <div class="content">
+                <div class="copyright-text">
+                    <span class="copyright">Powered by Rick.Lv</span>
+                    <span class="keyword">lvxiuquan@126.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div id="keep_accounts" class="accounts">
+        <button type="button" class="close" onclick="$('#keep_accounts').hide();">
+            <span>×</span>
+        </button>
+        <form class="form-horizontal account_form" role="form">
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">说明</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control input_1" id="description" placeholder="消费内容">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">金额</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control input_1" id="amount" placeholder="花费金额">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">时间</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control input_1" id="time" placeholder="付款时间">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">参与人</label>
+                <div class="col-sm-10">
+                    <label class="offset_1">
+                        <input type="checkbox" class="user_check" data-id="amount_1" checked="checked">{{Account.lv}}
+                    </label>
+                    <label class="offset_2">
+                        <input type="checkbox" class="user_check" data-id="amount_2" checked="checked">{{Account.yu}}
+                    </label>
+                    <label class="offset_3">
+                        <input type="checkbox" class="user_check" data-id="amount_3" checked="checked">{{Account.xu}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">人均</label>
+                <div class="row">
+                    <div class="col-xs-2 left-offset-2">
+                        <input type="text" class="form-control text-center amount" id="amount_1" value="0">
+                    </div>
+                    <div class="col-xs-2 left-offset-2">
+                        <input type="text" class="form-control text-center amount" id="amount_2" value="0">
+                    </div>
+                    <div class="col-xs-2 left-offset-2">
+                        <input type="text" class="form-control text-center amount" id="amount_3" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-success" style="float: right;"
+                        onclick="main.base.submitAccount();">记着吧</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+</body>
+
+
+<script type="text/javascript">
+$('#time').datetimepicker({lang: 'ch',step: 10,timepicker:false,format:'Y-m-d',});
+</script>
+</html>

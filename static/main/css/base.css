@@ -1,0 +1,62 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body {background: #e1e1e1; font-size: 12px; font-family: 微软雅黑 !important; }
+
+.head {position: relative; z-index: 200; height: 52px; width: 100%; min-width: 1000px; background: url("/static/main/img/repeatX.png") repeat-x 0 0; }
+.head .content {width: 1000px; height: 48px; line-height: 48px; margin: 0 auto; }
+.head .content .logo {width: 96px; height: 48px; float: left; }
+.head .content .logo .img {display: -moz-inline-stack; display: inline-block; vertical-align: middle; zoom: 1; background: url("/static/main/img/logo.png") no-repeat; background-size: 130px; margin-top: 10px; width: 130px; height: 25px; float: left; }
+.head .content .tool {float: right; cursor: pointer; position: relative; }
+.head .content .tool .login {float: left; display: block; width: auto; text-align: center; }
+.head .content .tool .login a {color: #fff; margin-right: 20px;}
+
+.ranking {width: 1000px; -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); background: #fff; padding-top: 30px; margin: 40px auto 0; }
+.foot {display: block; margin-top: 80px; width: 100%; min-width: 1000px; height: auto; position: absolute; bottom: auto; left: 0; }
+.foot .content {width: 1000px; margin: 0 auto; }
+.foot .fb {background: #7d7d7d; height: 80px; width: 100%; line-height: 80px; }
+.foot .fb .content {height: 80px; position: relative; }
+.foot .fb .copyright-text {float: right; line-height: 20px; color: #ccc; font-size: 12px; margin-top: 25px; }
+.foot .fb span.copyright, .foot .fb span.keyword {display: block; text-align: right; }
+.foot .fb span.copyright {color: #ccc; padding-right: 7px;}
+.foot .fb span.keyword {color: #aaa; }
+
+.school .school-head h1 {color: #434343; font-size: 24px; margin-bottom: 20px; text-align: center; }
+.school .school-head .des {font-size: 12px; line-height: 1.5; margin-bottom: 20px; padding: 0 20px 20px; color: #666; border-bottom: 1px solid #ccc; text-align: center; }
+.ranking .base-form {margin-top: 0px; margin-left: 20px; position: relative;min-height: 50px;}
+.func-left {float: left;}
+.func-right {float: right;margin-right: 50px;}
+.func-right button {margin-right: 5px;}
+.ranking .tabDiv {margin-top: 5px; width: 100%; background: #fff; min-height: 500px; padding-top: 20px; }
+.ranking .more {margin-top: 20px; height: 65px; width: 100%; }
+.ranking .more a {display: block; width: 735px; height: 25px; line-height: 25px; color: #999; text-align: center; margin: 0 auto; background: url("/static/main/img/repeatX.png") repeat-x 0 -80px; }
+
+.stats {margin: 0 auto;}
+.row-fluid {width: 100%; }
+.row-fluid:before, .row-fluid:after {display: table; line-height: 0; content: ""; }
+.row-fluid .span3 {margin-left: 0; width: 25%; display: inline-block; min-height: 30px; margin-left: 6%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.stats h2,.stats h4,.stats h6{margin:10px 0;font-family:inherit;font-weight:bold;line-height:20px;color:inherit;text-rendering:optimizelegibility;}
+.stats h4{font-size:17.5px;}
+.stats{text-align:left;}
+.stats .stat{background-color:#eeeeee;color:#555555;padding:10px;border-radius:6px;margin-bottom:20px;text-align:center;}
+.stats .stat h2{font-weight:600;font-size:31.5px;line-height:40px;}
+.stats .stat h6{margin-top:-10px;font-size:15px;letter-spacing:10px;margin-left:20px;}
+.stats .s1{background-color:#14b8d4;color:#FFF;}
+.stats .s2{background-color:#ea494a;color:#FFF;}
+.stats .s3{background-color:#ffa93c;color:#FFF;}
+
+.accounts {position: fixed; top: 25%; left: 50%; margin-left: -300px; width: 600px; height: auto; box-shadow: 0 2px 8px rgba(0,0,0,.2); background: #fcfcfc; border: 1px solid #dfdfdf; border-radius: 3px;display: none;}
+.accounts .left-offset {margin-left: 50px;}
+.accounts .left-offset-2 {margin-left: 30px; width: 100px;}
+.accounts .offset-3 {margin-left: 15px;}
+.accounts .account_form{width: 80%;margin: 25px auto;}
+.offset_1{margin-left: 39px;}
+.offset_2{margin-left: 73px;}
+.offset_3{margin-left: 77px;}
+
+.input_1{width: 80%;margin:0 auto;}
