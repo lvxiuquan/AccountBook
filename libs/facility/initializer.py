@@ -4,7 +4,7 @@
 import MySQLdb
 
 def create_local_mysql():
-    conn = MySQLdb.connect(host = "121.40.201.212",
+    conn = MySQLdb.connect(host = "127.0.0.1",	#121.40.201.212
                            port = 3808,
                            user = "work", 
                            passwd = "312312", 

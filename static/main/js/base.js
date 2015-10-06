@@ -16,6 +16,7 @@ main.base = {
         push_data.amount_1 = $("#amount_1").val();
         push_data.amount_2 = $("#amount_2").val();
         push_data.amount_3 = $("#amount_3").val();
+        push_data.amount_4 = $("#amount_4").val();
 
         if(push_data.description.length == 0){
             alert("消费内容不能为空");

@@ -66,7 +66,7 @@
                     </div>
                     <div class="span3">
                         <div class="stat s3">
-                            <h2>{{presents.xu}}</h2>
+                            <h2>{{presents.dong}}</h2>
                             <h6>{{Account.dong}}</h6>
                         </div>
                     </div>
@@ -99,6 +99,7 @@
                         <th>{{Account.lv}}</th>
                         <th>{{Account.yu}}</th>
                         <th>{{Account.xu}}</th>
+                        <th>{{Account.dong}}</th>
                         <th>时间</th>
                     </tr>
                 </thead>
@@ -111,6 +112,7 @@
                         <td>{{account.lv}}</td>
                         <td>{{account.yu}}</td>
                         <td>{{account.xu}}</td>
+                        <td>{{account.dong}}</td>
                         <td>{{account.time|date:"Y-m-d"}}</td>
                     </tr>
                     {% endfor %}
@@ -170,6 +172,9 @@
                     <label class="offset_3">
                         <input type="checkbox" class="user_check" data-id="amount_3" checked="checked">{{Account.xu}}
                     </label>
+                    <label class="offset_4">
+                        <input type="checkbox" class="user_check" data-id="amount_4" checked="checked">{{Account.dong}}
+                    </label>
                 </div>
             </div>
             <div class="form-group">
@@ -183,6 +188,9 @@
                     </div>
                     <div class="col-xs-2 left-offset-2">
                         <input type="text" class="form-control text-center amount" id="amount_3" value="0">
+                    </div>
+                    <div class="col-xs-2 left-offset-2">
+                        <input type="text" class="form-control text-center amount" id="amount_4" value="0">
                     </div>
                 </div>
             </div>

@@ -12,14 +12,14 @@ class AccountApi(db.BaseDB):
         account_info_list = []
         try:
             self.conn()
-            sql_str = '''SELECT A.ID, Description, Amount, Time, UserLv, UserYu, UserXu, U.first_name, EditDate
+            sql_str = '''SELECT A.ID, Description, Amount, Time, UserLv, UserYu, UserXu, UserDong, U.first_name, EditDate
                         FROM account_info A
                         LEFT JOIN auth_user U ON U.id=A.Operator
                         ORDER BY EditDate DESC
                         LIMIT %s,%s
                         '''
             self.cursor.execute(sql_str, (0, 50, ))
-            for account_id, desc, amount, time, lv, yu, xu, operator, edit_time in self.fetchall():
+            for account_id, desc, amount, time, lv, yu, xu, dong, operator, edit_time in self.fetchall():
                 account_info_list.append({
                     "account_id": account_id,
                     "desc": desc,
@@ -28,6 +28,7 @@ class AccountApi(db.BaseDB):
                     "lv": lv,
                     "yu": yu,
                     "xu": xu,
+                    "dong": dong,
                     "operator": operator,
                     "edit_time": edit_time,
                 })
@@ -55,12 +56,12 @@ class AccountApi(db.BaseDB):
         try:
             self.conn()
             sql_str = '''INSERT INTO account_info 
-                        (Description, Amount, Time, UserLv, UserYu, UserXu, Operator) 
-                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                        (Description, Amount, Time, UserLv, UserYu, UserXu, UserDong, Operator) 
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                         '''
             self.cursor.execute(sql_str, (
                 data["description"], data["amount"], data["time"],
-                account["lv"], account["yu"], account["xu"], self.user.id))
+                account["lv"], account["yu"], account["xu"], account["dong"], self.user.id))
             for i in account:
                 self._update_wealth(account[i], i)
         finally:
@@ -72,8 +73,9 @@ class AccountApi(db.BaseDB):
             "lv": float("-" + data["amount_1"]),
             "yu": float("-" + data["amount_2"]),
             "xu": float("-" + data["amount_3"]),
+            "dong": float("-" + data["amount_4"]),
         }
-        account[user] = account[user] - account["lv"] - account["yu"] - account["xu"]
+        account[user] = account[user] - account["lv"] - account["yu"] - account["xu"] - account["dong"]
         return account
     
     def _update_wealth(self, amount, name):
