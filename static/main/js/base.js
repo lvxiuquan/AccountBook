@@ -1,6 +1,5 @@
 /*
- * utf-8 编码
- * License: http://wom.wiwide.com/
+ * utf-8
  */
 
 if (typeof (main) == 'undefined') {
